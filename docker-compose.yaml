@@ -12,9 +12,15 @@ services:
       image: mysql
       command: --default-authentication-plugin=mysql_native_password
       restart: always
+      volumes:
+        - ./my.cnf:/etc/conf.d/my.cnf
       environment:
         MYSQL_ROOT_PASSWORD: qwertyuiop
-
+        # volumes default mysql /var/lib/mysql
+      #volumes:
+      #  - my-datavolume:/var/lib/mysql
+      #ports:
+      #  - "3306:3306"
     phpmyadmin:
       image: phpmyadmin/phpmyadmin
       environment:
